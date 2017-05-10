@@ -25,7 +25,7 @@ SECRET_KEY = 'a!ky*jldegy#wx+woha*n#77@%0960csbr%8y2ngf3adz%98w3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['melvault.immortaltech.in']
 
 
 # Application definition
@@ -117,11 +117,11 @@ TIME_ZONE = 'Asia/Kolkata'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR,"deploy_to_server")
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,"melvaultweb_static_files")
+STATIC_URL = '/melvaultweb_static_files/'
 
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "melvaultweb_static_files"),
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR,"Media")
