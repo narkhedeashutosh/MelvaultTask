@@ -1,0 +1,97 @@
+<html lang="en" ng-app="melvaultApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Melvault Task</title>
+    {% load staticfiles %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/angular-ui-notification.min.css' %}" rel="stylesheet">
+    <!-- adding some javascript files -->
+    <script src="{% static 'js/jquery.min.js' %} "></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/angular.min.js' %}"></script>
+    <script src="{% static 'js/angular-ui-notification.min.js' %}"></script>
+    <script src="{% static 'js/loading-bar.min.js' %}"></script>
+    <script src="{% static 'js/melvault.js' %}"></script>
+
+</head>
+{% verbatim %}
+
+<body ng-controller="melvaultCtrl">
+      <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Melvault Task</a>
+            </div>
+        </nav>
+    <div class="container-fluid">
+      <p class="well">
+      <a href="get_cpu_data/" target="_blank">Click Here to get data cpu status</a>
+      </p>
+        <div class="row well">
+         <div class="col-sm-1">
+            <h3 style="margin:0px 5px 5px 0px;">Cpu Status</h3>
+         </div>
+         <div class="col-sm-4">
+            <div class="row" style="text-align:center;">
+              <div class="col-sm-12">cpuCount <br> <b>{{cpuData.cpuCount}}</b></div>
+            </div>
+          </div>
+          <div class="col-sm-5">
+            <div class="row" style="text-align:center;">
+              <div class="col-sm-3">Context Switches <br> <b>{{cpuData.cpuStats.ctxSwitches}}</b></div>
+              <div class="col-sm-3">Interrupte <br> <b>{{cpuData.cpuStats.interrupts}}</b></div>
+              <div class="col-sm-3" >Software Interrupts <br> <b>{{cpuData.cpuStats.softInterrupts}}</b></div>
+              <div class="col-sm-3">SysCalls <br> <b>{{cpuData.cpuStats.syscalls}}</b></div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <!-- starting  web scrapper -->
+        <div class="row well">
+          <h3 style="margin:0px 5px 5px 0px;">Web Scrapper</h3>
+            <div class="col-sm-12">
+                <table class="table table-bordered">
+                <tr>
+                  <th>#</th>
+                  <th>Symbol</th>
+                  <th>LTP</th>
+                  <th>%Change</th>
+                  <th>Traded Qty</th>
+                  <th>Value(in Lakhs)</th>
+                  <th>Open</th>
+                  <th>High</th>
+                  <th>Low</th>
+                  <th>Prev.Close</th>
+                  <th>LatestEx Date</th>
+                  <th>CA</th>
+                </tr>
+                <tr ng-repeat="i in niftyGainers">
+                  <td>{{$index+1}}</td>
+                  <td>{{i.symbol}}</td>
+                  <td>{{i.ltp}}</td>
+                  <td>{{i.netPrice}}</td>
+                  <td>{{i.tradedQuantity}}</td>
+                  <td>{{i.turnoverInLakhs}}</td>
+                  <td>{{i.openPrice}}</td>
+                  <td>{{i.highPrice}}</td>
+                  <td>{{i.lowPrice}}</td>
+                  <td>{{i.previousPrice}}</td>
+                  <td>{{i.lastCorpAnnouncementDate}}</td>
+                  <td>{{i.lastCorpAnnouncement}}</td>
+                </tr>
+                </table>
+            </div>
+        </div>
+        <!-- ending  web scrapper -->
+
+    </div>
+
+
+</body>
+{% endverbatim %}
+
+</html>
